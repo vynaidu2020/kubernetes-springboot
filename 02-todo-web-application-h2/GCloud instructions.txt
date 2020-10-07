@@ -4,7 +4,7 @@ docker image tag <old image> <new image>
 
 Push Image
 ----------
-docker push vynaidudocker/hello-world-rest-api:0.0.1
+docker push vynaidudocker/todo-web-application-h2:0.0.1
 
 Connect GCP
 ------------
@@ -12,6 +12,7 @@ gcloud container clusters get-credentials <cluster-name> --zone us-central1-c --
 
 Deploy in GCP
 --------------
-kubectl create deployment hello-world-rest-api --image=vynaidudocker/hello-world-rest-api:0.0.1
-kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
-kubectl delete all -l app=hello-world-rest-api
+kubectl create deployment todo-web-app --image=vynaidudocker/todo-web-application-h2:0.0.1
+kubectl expose deployment todo-web-app --type=LoadBalancer --port=8080
+kubectl scale deployment todo-web-app --replicas=3
+kubectl delete all -l app=todo-web-app
