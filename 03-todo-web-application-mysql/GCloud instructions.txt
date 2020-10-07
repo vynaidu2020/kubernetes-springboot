@@ -1,0 +1,35 @@
+mvn clean package
+
+Tag Image
+---------
+docker image tag <old image> <new image>
+
+Push Image
+----------
+docker push vynaidudocker/todo-web-application-h2:0.0.1
+
+Docker run
+-------------
+docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=todos --name mysql --publish 3306:3306 mysql:5.7
+docker run -p 8080:8080 --link=mysql --env RDS_HOSTNAME=mysql vynaidudocker/todo-web-application-mysql:0.0.1
+
+OR
+
+docker-compose up -d
+
+
+Convert kubernetes development yaml file (Ensure docker-compose.yaml file in the path)
+---------------------------------------
+kompose convert
+
+
+Connect GCP
+------------
+gcloud container clusters get-credentials <cluster-name> --zone us-central1-c --project <project-name>
+
+Deploy in GCP
+--------------
+kubectl apply -f mysql-database-data-volume-persistentvolumeclaim.yaml,mysql-deployment.yaml,mysql-service.yaml
+kubectl get service
+kubectl apply -f todo-web-application-deployment.yaml,todo-web-application-service.yaml
+
