@@ -16,3 +16,6 @@ kubectl create deployment todo-web-app --image=vynaidudocker/todo-web-applicatio
 kubectl expose deployment todo-web-app --type=LoadBalancer --port=8080
 kubectl scale deployment todo-web-app --replicas=3
 kubectl delete all -l app=todo-web-app
+
+kubectl get deployment todo-web-app -o yaml > deployment.yaml
+kubectl get service todo-web-app -o yaml > service.yaml
