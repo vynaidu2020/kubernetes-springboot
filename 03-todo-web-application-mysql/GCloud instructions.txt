@@ -33,3 +33,8 @@ kubectl apply -f mysql-database-data-volume-persistentvolumeclaim.yaml,mysql-dep
 kubectl get service
 kubectl apply -f todo-web-application-deployment.yaml,todo-web-application-service.yaml
 
+
+Delete all
+-----------
+kubectl delete -f mysql-database-data-volume-persistentvolumeclaim.yaml,mysql-deployment.yaml,mysql-service.yaml,todo-web-application-deployment.yaml,todo-web-application-service.yaml
+
