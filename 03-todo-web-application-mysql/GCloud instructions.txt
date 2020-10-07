@@ -25,7 +25,7 @@ kompose convert
 
 Connect GCP
 ------------
-gcloud container clusters get-credentials <cluster-name> --zone us-central1-c --project <project-name>
+gcloud container clusters get-credentials vyn-cluster-gcp --zone us-central1-c --project prime-hydra-291212
 
 Deploy in GCP
 --------------
