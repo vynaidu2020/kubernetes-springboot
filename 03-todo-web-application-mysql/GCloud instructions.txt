@@ -38,3 +38,25 @@ Delete all
 -----------
 kubectl delete -f mysql-database-data-volume-persistentvolumeclaim.yaml,mysql-deployment.yaml,mysql-service.yaml,todo-web-application-deployment.yaml,todo-web-application-service.yaml
 
+
+Centerlised configuration in Kubernetes by using  configmap
+-----------------------------------------------------------
+kubectl create configmap todo-web-application-config --from-literal=RDS_DB_NAME=todos
+kubectl get configmap todo-web-application-config
+kubectl describe configmap/todo-web-application-config
+
+kubectl apply -f todo-web-application-deployment.yaml
+
+kubectl edit configmap/todo-web-application-config
+## Restart the container by scale down and up
+kubectl scale deployment todo-web-application --replicas=0
+kubectl scale deployment todo-web-application --replicas=1
+
+
+Centerlised configuration in Kubernetes by using  secret
+-----------------------------------------------------------
+kubectl create secret generic todo-web-application-secrets --from-literal=RDS_PASSWORD=dummytodos
+kubectl get secret/todo-web-application-secrets
+kubectl describe secret/todo-web-application-secrets
+
+
