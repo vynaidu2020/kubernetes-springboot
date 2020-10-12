@@ -29,6 +29,12 @@ gcloud container clusters get-credentials vyn-cluster-gcp --zone us-central1-c -
 
 Deploy in GCP
 --------------
+
+kubectl apply -f mysql-database-data-volume-persistentvolumeclaim-aws.yaml,mysql-deployment.yaml,mysql-service.yaml
+kubectl apply -f config-map.yaml,secret.yaml,todo-web-application-deployment.yaml,todo-web-application-service.yaml
+
+before adding configMap and secrets
+------------------------------------
 kubectl apply -f mysql-database-data-volume-persistentvolumeclaim.yaml,mysql-deployment.yaml,mysql-service.yaml
 kubectl get service
 kubectl apply -f todo-web-application-deployment.yaml,todo-web-application-service.yaml
@@ -48,6 +54,12 @@ kubectl describe configmap/todo-web-application-config
 kubectl apply -f todo-web-application-deployment.yaml
 
 kubectl edit configmap/todo-web-application-config
+
+  RDS_DB_NAME: todos
+  RDS_HOSTNAME: mysql
+  RDS_PORT: "3306"
+  RDS_USENAME: todos-user
+  
 ## Restart the container by scale down and up
 kubectl scale deployment todo-web-application --replicas=0
 kubectl scale deployment todo-web-application --replicas=1
@@ -58,5 +70,7 @@ Centerlised configuration in Kubernetes by using  secret
 kubectl create secret generic todo-web-application-secrets --from-literal=RDS_PASSWORD=dummytodos
 kubectl get secret/todo-web-application-secrets
 kubectl describe secret/todo-web-application-secrets
+
+
 
 
