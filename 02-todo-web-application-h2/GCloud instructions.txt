@@ -15,6 +15,9 @@ Deploy in GCP
 kubectl create deployment todo-web-app --image=vynaidudocker/todo-web-application-h2:0.0.1
 kubectl expose deployment todo-web-app --type=LoadBalancer --port=8080
 kubectl get svc
+
+http://35.154.119.62:8080
+
 kubectl scale deployment todo-web-app --replicas=3
 kubectl delete all -l app=todo-web-app
 

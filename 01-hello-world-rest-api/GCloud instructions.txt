@@ -8,10 +8,11 @@ docker push vynaidudocker/hello-world-rest-api:0.0.1
 
 Connect GCP
 ------------
-gcloud container clusters get-credentials <cluster-name> --zone us-central1-c --project <project-name>
+gcloud container clusters get-credentials k8s-cluster --zone us-central1-c --project prime-hydra-291212
 
 Deploy in GCP
 --------------
 kubectl create deployment hello-world-rest-api --image=vynaidudocker/hello-world-rest-api:0.0.1
 kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
+kubectl get service
 kubectl delete all -l app=hello-world-rest-api
