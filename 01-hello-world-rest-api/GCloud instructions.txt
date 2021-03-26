@@ -20,6 +20,10 @@ Rollout (Version change)
 ---------------------------
 kubectl set image deployment hello-world-rest-api hello-world-rest-api=vynaidudocker/hello-world-rest-api:0.0.2.RELEASE
 
+See history of deployments
+---------------------------
+kubectl rollout history deployment hello-world-rest-api
+
 Undo the deployment
 --------------------
 kubectl rollout undo deployment hello-world-rest-api --to-revision=1
