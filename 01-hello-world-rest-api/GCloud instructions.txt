@@ -15,4 +15,13 @@ Deploy in GCP
 kubectl create deployment hello-world-rest-api --image=vynaidudocker/hello-world-rest-api:0.0.1
 kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
 kubectl get service
+
+Rollout (Version change)
+---------------------------
+kubectl set image deployment hello-world-rest-api hello-world-rest-api=vynaidudocker/hello-world-rest-api:0.0.2.RELEASE
+
+Undo the deployment
+--------------------
+kubectl rollout undo deployment hello-world-rest-api --to-revision=1
+
 kubectl delete all -l app=hello-world-rest-api
